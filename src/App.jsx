@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
     import './App.css';
 
-    function App() {
+    const App = () => {
       const [tweets, setTweets] = useState([]);
       const [newTweet, setNewTweet] = useState('');
       const [currentUser, setCurrentUser] = useState(null);
@@ -61,6 +61,32 @@ import React, { useState, useEffect } from 'react';
         fetchTweets();
         if (parentTweetId) {
           fetchReplies(parentTweetId);
+        }
+      };
+
+      const deleteTweet = async (tweetId) => {
+        if (!window.confirm('Are you sure you want to delete this tweet?')) return;
+
+        try {
+					console.log(`Username for delete : ${currentUser}`);
+              const response = await fetch(
+					      `http://localhost:3001/api/tweets/${tweetId}/${currentUser}`, 
+					      {
+					        method: 'DELETE'
+					      }
+					    );
+
+          if (!response.ok) {
+            throw new Error('Failed to delete tweet');
+          }
+
+          fetchTweets();
+          if (replyingTo) {
+            fetchReplies(replyingTo);
+          }
+        } catch (err) {
+          console.error('Error deleting tweet:', err);
+          alert('Failed to delete tweet');
         }
       };
 
@@ -209,6 +235,14 @@ import React, { useState, useEffect } from 'react';
                   <span className="timestamp">
                     {new Date(tweet.created_at).toLocaleString()}
                   </span>
+                  {tweet.username === currentUser && (
+                    <button 
+                      className="delete-tweet"
+                      onClick={() => deleteTweet(tweet.id)}
+                    >
+                      🗑️
+                    </button>
+                  )}
                 </div>
                 <div className="content">{tweet.content}</div>
                 
@@ -249,6 +283,6 @@ import React, { useState, useEffect } from 'react';
           </div>
         </div>
       );
-    }
+    };
 
     export default App;

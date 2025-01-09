@@ -1,26 +1,31 @@
 /* Global Styles */
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    :root {
+      --primary-color: #1da1f2;
+      --secondary-color: #14171a;
+      --background-color: #f5f8fa;
+      --border-color: #e1e8ed;
+      --error-color: #e0245e;
+      --success-color: #17bf63;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #f5f8fa;
-      color: #14171a;
     }
 
-    a {
-      color: #1da1f2;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--secondary-color);
+      line-height: 1.5;
     }
 
     /* Login Page */
     .login-container {
       max-width: 400px;
-      margin: 50px auto;
-      padding: 20px;
+      margin: 2rem auto;
+      padding: 2rem;
       background-color: white;
       border-radius: 15px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -28,25 +33,25 @@
     }
 
     .login-container h1 {
-      color: #1da1f2;
-      margin-bottom: 20px;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
     }
 
     .user-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 20px;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
     }
 
     .user-button {
-      background-color: #1da1f2;
+      background-color: var(--primary-color);
       color: white;
       border: none;
-      padding: 12px;
+      padding: 0.75rem;
       border-radius: 25px;
       cursor: pointer;
-      font-size: 1em;
+      font-size: 1rem;
       transition: background-color 0.2s;
     }
 
@@ -55,7 +60,7 @@
     }
 
     .user-button.create-user {
-      background-color: #17bf63;
+      background-color: var(--success-color);
     }
 
     .user-button.create-user:hover {
@@ -63,33 +68,33 @@
     }
 
     .create-user-form {
-      margin-top: 20px;
-      padding: 20px;
-      background-color: #f5f8fa;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background-color: var(--background-color);
       border-radius: 10px;
     }
 
     .create-user-form input {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #e1e8ed;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--border-color);
       border-radius: 25px;
-      font-size: 1em;
+      font-size: 1rem;
     }
 
     .create-user-form button {
-      margin-right: 10px;
-      padding: 8px 16px;
+      margin-right: 0.5rem;
+      padding: 0.5rem 1rem;
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      font-size: 0.9em;
+      font-size: 0.9rem;
       transition: background-color 0.2s;
     }
 
     .create-user-form button:first-of-type {
-      background-color: #1da1f2;
+      background-color: var(--primary-color);
       color: white;
     }
 
@@ -98,7 +103,7 @@
     }
 
     .create-user-form button:last-of-type {
-      background-color: #e1e8ed;
+      background-color: var(--border-color);
     }
 
     .create-user-form button:last-of-type:hover {
@@ -106,36 +111,36 @@
     }
 
     .error {
-      color: #e0245e;
-      margin-top: 10px;
-      font-size: 0.9em;
+      color: var(--error-color);
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
     }
 
     /* Main App */
     .app {
       max-width: 800px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 1rem;
     }
 
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #e1e8ed;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .header h1 {
-      color: #1da1f2;
+      color: var(--primary-color);
       margin: 0;
     }
 
     .user-controls {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0.75rem;
     }
 
     .user-controls span {
@@ -144,13 +149,13 @@
     }
 
     .user-controls button {
-      background-color: #1da1f2;
+      background-color: var(--primary-color);
       color: white;
       border: none;
-      padding: 8px 16px;
+      padding: 0.5rem 1rem;
       border-radius: 25px;
       cursor: pointer;
-      font-size: 0.9em;
+      font-size: 0.9rem;
       transition: background-color 0.2s;
     }
 
@@ -159,9 +164,9 @@
     }
 
     .tweet-form {
-      margin-bottom: 20px;
+      margin-bottom: 1.5rem;
       background-color: white;
-      padding: 20px;
+      padding: 1.5rem;
       border-radius: 15px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
@@ -169,22 +174,22 @@
     .tweet-form textarea {
       width: 100%;
       height: 100px;
-      margin-bottom: 10px;
-      padding: 10px;
-      border: 1px solid #e1e8ed;
+      margin-bottom: 0.75rem;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
       border-radius: 10px;
       resize: vertical;
-      font-size: 1em;
+      font-size: 1rem;
     }
 
     .tweet-form button {
-      background-color: #1da1f2;
+      background-color: var(--primary-color);
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 0.75rem 1.5rem;
       border-radius: 25px;
       cursor: pointer;
-      font-size: 1em;
+      font-size: 1rem;
       transition: background-color 0.2s;
     }
 
@@ -194,18 +199,18 @@
 
     .user-filter {
       display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
       flex-wrap: wrap;
     }
 
     .user-filter button {
-      background-color: #e1e8ed;
+      background-color: var(--border-color);
       border: none;
-      padding: 8px 16px;
+      padding: 0.5rem 1rem;
       border-radius: 25px;
       cursor: pointer;
-      font-size: 0.9em;
+      font-size: 0.9rem;
       transition: background-color 0.2s;
     }
 
@@ -214,14 +219,14 @@
     }
 
     .user-filter button.active {
-      background-color: #1da1f2;
+      background-color: var(--primary-color);
       color: white;
     }
 
     .tweet {
-      border: 1px solid #e1e8ed;
-      padding: 20px;
-      margin-bottom: 10px;
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      margin-bottom: 0.75rem;
       border-radius: 15px;
       background-color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -230,39 +235,40 @@
     .tweet-header {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 10px;
+      align-items: center;
+      margin-bottom: 0.75rem;
     }
 
     .username {
       font-weight: bold;
-      color: #1da1f2;
+      color: var(--primary-color);
     }
 
     .timestamp {
       color: #657786;
-      font-size: 0.9em;
+      font-size: 0.9rem;
     }
 
     .content {
-      font-size: 1.1em;
+      font-size: 1.1rem;
       line-height: 1.5;
-      color: #14171a;
+      color: var(--secondary-color);
     }
 
     /* Reply Styles */
     .tweet-actions {
       display: flex;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
     }
 
     .reply-button, .view-replies {
       background-color: transparent;
       border: none;
-      color: #1da1f2;
+      color: var(--primary-color);
       cursor: pointer;
-      padding: 5px;
-      font-size: 0.9em;
+      padding: 0.5rem;
+      font-size: 0.9rem;
     }
 
     .reply-button:hover, .view-replies:hover {
@@ -270,27 +276,27 @@
     }
 
     .replies {
-      margin-top: 15px;
-      padding-left: 20px;
-      border-left: 2px solid #e1e8ed;
+      margin-top: 1rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--border-color);
     }
 
     .reply {
-      margin: 10px 0;
-      padding: 10px;
-      background-color: #f5f8fa;
+      margin: 0.75rem 0;
+      padding: 0.75rem;
+      background-color: var(--background-color);
       border-radius: 10px;
     }
 
     .reply-header {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 5px;
-      font-size: 0.9em;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
     }
 
     .reply .username {
-      color: #1da1f2;
+      color: var(--primary-color);
     }
 
     .reply .timestamp {
@@ -298,42 +304,57 @@
     }
 
     .reply .content {
-      font-size: 0.95em;
-      color: #14171a;
+      font-size: 0.95rem;
+      color: var(--secondary-color);
     }
 
     .cancel-reply {
-      background-color: #e0245e;
+      background-color: var(--error-color);
       color: white;
       border: none;
-      padding: 8px 16px;
+      padding: 0.5rem 1rem;
       border-radius: 25px;
       cursor: pointer;
-      margin-left: 10px;
+      margin-left: 0.75rem;
     }
 
     .cancel-reply:hover {
       background-color: #c81e4e;
     }
 
+    .delete-tweet {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      margin-left: 0.75rem;
+      color: var(--error-color);
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .delete-tweet:hover {
+      color: #c81e4e;
+    }
+
     /* Responsive Design */
     @media (max-width: 600px) {
       .app {
-        padding: 10px;
+        padding: 0.75rem;
       }
 
       .header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
+        gap: 0.75rem;
       }
 
       .user-filter {
-        gap: 5px;
+        gap: 0.5rem;
       }
 
       .user-filter button {
-        padding: 6px 12px;
-        font-size: 0.8em;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
       }
     }

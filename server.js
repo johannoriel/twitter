@@ -35,13 +35,11 @@ import express from 'express';
         )
       `);
 
-      db.run(`
-        INSERT OR IGNORE INTO users (username) 
-        VALUES ('alice'), ('bob'), ('charlie')
-      `);
+      // Insert some sample users
+      db.run("INSERT OR IGNORE INTO users (username) VALUES ('alice'), ('bob'), ('charlie')");
     });
 
-    // Get tweets with replies
+    // API Endpoints
     app.get('/api/tweets', (req, res) => {
       const { username } = req.query;
       let query = `
@@ -67,7 +65,6 @@ import express from 'express';
       });
     });
 
-    // Get replies for a specific tweet
     app.get('/api/tweets/:id/replies', (req, res) => {
       const { id } = req.params;
       db.all(`
@@ -129,6 +126,34 @@ import express from 'express';
           return;
         }
         res.json({ id: this.lastID });
+      });
+    });
+
+    app.delete('/api/tweets/:id/:username', (req, res) => {
+ 			const { id, username } = req.params;
+
+			console.log(`Username for delete server : ${username}`);
+			//console.log('Request details:', JSON.stringify(req, null, 2));
+      if (!username) {
+        res.status(400).json({ error: 'Username is required' });
+        return;
+      }
+
+      db.run(`
+        DELETE FROM tweets
+        WHERE id = ? AND username = ?
+      `, [id, username], function(err) {
+        if (err) {
+          res.status(500).json({ error: err.message });
+          return;
+        }
+
+        if (this.changes === 0) {
+          res.status(404).json({ error: 'Tweet not found or unauthorized' });
+          return;
+        }
+
+        res.json({ success: true });
       });
     });
 
